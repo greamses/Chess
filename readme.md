@@ -104,7 +104,7 @@ No installation required - runs directly in modern browsers:
 2. Open `index.html` in any browser
 
 ```bash
-git clone https://github.com/yourusername/chess-master.git
+git clone https://github.com/greamses/Chess.git
 ```
 
 ## Development Highlights
