@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
       this.modal = document.getElementById('pre-game-modal');
       this.startButton = document.getElementById('start-game-btn');
       
-      // Default settings
       this.settings = {
         whitePlayer: 'human',
         blackPlayer: 'computer',
