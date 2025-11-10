@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Chess Game</title>
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -17,125 +18,111 @@
       <div id="game-status">Game in progress</div>
     </div>
     <div class="chessboard" id="chessboard"></div>
-   <div class="chess-controls">
-  <button id="undo-btn" aria-label="Undo move">
-    <svg viewBox="0 0 100 100" width="40" height="40">
-      <path fill="currentColor" d="M70,30 Q50,10 30,30 L15,15 L15,85 L30,70 Q50,90 70,70 Q90,50 70,30" 
-            stroke="#FF8811" stroke-width="8" stroke-linejoin="round"/>
-      <path fill="#FF8811" d="M45,50 L60,35 L60,65 Z"/>
-    </svg>
-  </button>
-  
-  <button id="flip-board" aria-label="Flip board">
-    <svg viewBox="0 0 100 100" width="40" height="40">
-      <path fill="currentColor" d="M30,30 Q50,10 70,30 L85,15 L85,85 L70,70 Q50,90 30,70 Q10,50 30,30" 
-            stroke="#FF8811" stroke-width="8" stroke-linejoin="round"/>
-      <path fill="#FF8811" d="M40,50 L25,35 L25,65 Z M75,50 L60,35 L60,65 Z" transform="rotate(180,50,50)"/>
-    </svg>
-  </button>
-  
-  <button id="new-game" aria-label="New game">
-    <svg viewBox="0 0 100 100" width="40" height="40">
-      <circle cx="50" cy="50" r="40" fill="currentColor" stroke="#FF8811" stroke-width="8"/>
-      <path fill="#FF8811" d="M50,30 V70 M30,50 H70" stroke="#FF8811" stroke-width="5" stroke-linecap="round"/>
-    </svg>
-  </button>
-</div>
+    <div class="chess-controls">
+      <button id="undo-btn" aria-label="Undo move">
+        <i class="fas fa-undo"></i>
+      </button>
+      
+      <button id="flip-board" aria-label="Flip board">
+        <i class="fas fa-sync-alt"></i>
+      </button>
+      
+      <button id="new-game" aria-label="New game">
+        <i class="fas fa-plus-circle"></i>
+      </button>
+    </div>
     <div class="move-history" id="move-history"></div>
   </div>
   
-  <!-- Add this to your HTML, preferably near the chess-container div -->
-<div id="pre-game-modal" class="modal-overlay">
-  <div class="modal-content">
-    <div class="player-selection">
-      <div class="player-option">
-        <h3>White Player</h3>
-        <div class="avatar-selector">
-          <div class="avatar-option active" data-player="white" data-type="human">
-            <div class="avatar-icon"> ♙</div>
-            <span>Me</span>
+  <div id="pre-game-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="player-selection">
+        <div class="player-option">
+          <h3>White Player</h3>
+          <div class="avatar-selector">
+            <div class="avatar-option active" data-player="white" data-type="human">
+              <div class="avatar-icon"><i class="fas fa-user"></i></div>
+              <span>Me</span>
+            </div>
+            <div class="avatar-option" data-player="white" data-type="computer">
+              <div class="avatar-icon"><i class="fas fa-robot"></i></div>
+              <span>Com</span>
+            </div>
           </div>
-          <div class="avatar-option" data-player="white" data-type="computer">
-            <div class="avatar-icon">♙</div>
-            <span>Com</span>
+        </div>
+        
+        <div class="player-option">
+          <h3>Black Player</h3>
+          <div class="avatar-selector">
+            <div class="avatar-option" data-player="black" data-type="human">
+              <div class="avatar-icon"><i class="fas fa-user"></i></div>
+              <span>Me</span>
+            </div>
+            <div class="avatar-option active" data-player="black" data-type="computer">
+              <div class="avatar-icon"><i class="fas fa-robot"></i></div>
+              <span>Com</span>
+            </div>
           </div>
         </div>
       </div>
       
-      <div class="player-option">
-        <h3>Black Player</h3>
-        <div class="avatar-selector">
-          <div class="avatar-option" data-player="black" data-type="human">
-            <div class="avatar-icon">♟</div>
-            <span>Me</span>
+      <div class="difficulty-selector">
+        <h3>Computer Difficulty</h3>
+        <div class="difficulty-options">
+          <div class="difficulty-option" data-difficulty="1">
+            <div class="difficulty-icon"><i class="fas fa-dice"></i></div>
+            <span>Random</span>
           </div>
-          <div class="avatar-option active" data-player="black" data-type="computer">
-            <div class="avatar-icon">♟</div>
-            <span>Com</span>
+          <div class="difficulty-option" data-difficulty="2">
+            <div class="difficulty-icon"><i class="fas fa-apple-alt"></i></div>
+            <span>Beginner</span>
+          </div>
+          <div class="difficulty-option" data-difficulty="3">
+            <div class="difficulty-icon"><i class="fas fa-glasses"></i></div>
+            <span>Novice</span>
+          </div>
+          <div class="difficulty-option" data-difficulty="4">
+            <div class="difficulty-icon"><i class="fas fa-balance-scale"></i></div>
+            <span>Material</span>
+          </div>
+          <div class="difficulty-option" data-difficulty="5">
+            <div class="difficulty-icon"><i class="fas fa-running"></i></div>
+            <span>Mobility</span>
+          </div>
+          <div class="difficulty-option active" data-difficulty="6">
+            <div class="difficulty-icon"><i class="fas fa-brain"></i></div>
+            <span>Intermediate</span>
+          </div>
+          <div class="difficulty-option" data-difficulty="7">
+            <div class="difficulty-icon"><i class="fas fa-user-graduate"></i></div>
+            <span>Advanced</span>
+          </div>
+          <div class="difficulty-option" data-difficulty="8">
+            <div class="difficulty-icon"><i class="fas fa-search"></i></div>
+            <span>Expert</span>
+          </div>
+          <div class="difficulty-option" data-difficulty="9">
+            <div class="difficulty-icon"><i class="fas fa-crown"></i></div>
+            <span>Master</span>
+          </div>
+          <div class="difficulty-option" data-difficulty="10">
+            <div class="difficulty-icon"><i class="fas fa-trophy"></i></div>
+            <span>Grandmaster</span>
           </div>
         </div>
       </div>
-    </div>
-    
-  <div class="difficulty-selector">
-  <h3>Computer Difficulty</h3>
-  <div class="difficulty-options">
-    <div class="difficulty-option" data-difficulty="1">
-      <div class="difficulty-icon">🎲</div>
-      <span>Random</span>
-    </div>
-    <div class="difficulty-option" data-difficulty="2">
-      <div class="difficulty-icon">🍎</div>
-      <span>Beginner</span>
-    </div>
-    <div class="difficulty-option" data-difficulty="3">
-      <div class="difficulty-icon">🤓</div>
-      <span>Novice</span>
-    </div>
-    <div class="difficulty-option" data-difficulty="4">
-      <div class="difficulty-icon">📊</div>
-      <span>Material</span>
-    </div>
-    <div class="difficulty-option" data-difficulty="5">
-      <div class="difficulty-icon">🏃</div>
-      <span>Mobility</span>
-    </div>
-    <div class="difficulty-option active" data-difficulty="6">
-      <div class="difficulty-icon">🤔</div>
-      <span>Intermediate</span>
-    </div>
-    <div class="difficulty-option" data-difficulty="7">
-      <div class="difficulty-icon">🧐</div>
-      <span>Advanced</span>
-    </div>
-    <div class="difficulty-option" data-difficulty="8">
-      <div class="difficulty-icon">🔍</div>
-      <span>Expert</span>
-    </div>
-    <div class="difficulty-option" data-difficulty="9">
-      <div class="difficulty-icon">🧠</div>
-      <span>Master</span>
-    </div>
-    <div class="difficulty-option" data-difficulty="10">
-      <div class="difficulty-icon">🏆</div>
-      <span>Grandmaster</span>
+      
+      <div class="theme-preview">
+        <div class="preview-square light"></div>
+        <div class="preview-square dark"></div>
+        <div class="preview-piece"><i class="fas fa-chess-king"></i></div>
+      </div>
+      
+      <button id="start-game-btn" class="start-button">
+        <i class="fas fa-play"></i>
+      </button>
     </div>
   </div>
-</div>
-    
-    <div class="theme-preview">
-      <div class="preview-square light"></div>
-      <div class="preview-square dark"></div>
-      <div class="preview-piece">♔</div>
-    </div>
-    
-    <button id="start-game-btn" class="start-button">
-      <svg viewBox="0 0 24 24" width="24" height="24">
-        <path fill="currentColor" d="M8,5.14V19.14L19,12.14L8,5.14Z" />
-      </svg>
-    </button>
-  </div>
-</div>
   <script src="script.js"></script>
 </body>
 

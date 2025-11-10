@@ -1,18 +1,11 @@
 :root {
   --light-square: #FFD6E0;
-  /* Soft pink */
   --dark-square: #A5E1D2;
-  /* Mint green */
   --highlight: rgba(255, 215, 0, 0.6);
-  /* Gold highlight */
   --move-hint: rgba(182, 255, 184, 0.6);
-  /* Light green */
   --check: rgba(255, 100, 100, 0.5);
-  /* Soft red */
   --text-primary: #5E548E;
-  /* Purple for text */
   --button-primary: #FF9F1C;
-  /* Orange for buttons */
   --success-feedback: rgba(182, 255, 184, 0.6);
 }
 
@@ -189,6 +182,7 @@ h1 {
   left: 5px;
 }
 
+/* Updated Chess Controls with Font Awesome */
 .chess-controls {
   display: flex;
   gap: 20px;
@@ -222,26 +216,23 @@ h1 {
   transform: scale(0.95) translateY(2px);
 }
 
+.chess-controls i {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+}
+
+.chess-controls button:hover i {
+  transform: scale(1.1);
+  color: var(--button-primary);
+}
+
 .touch-drag {
   position: absolute;
   pointer-events: none;
   z-index: 1000;
   transition: transform 0.1s ease;
-}
-
-.chess-controls svg {
-  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
-  transition: transform 0.2s;
-}
-
-.chess-controls button:hover svg {
-  transform: scale(1.1);
-}
-
-.chess-controls path,
-.chess-controls circle {
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }
 
 .move-history {
@@ -289,335 +280,7 @@ h1 {
   background: #FF8811;
 }
 
-/* Tutorial Elements */
-.tutorial-bubble {
-  position: absolute;
-  background: #FF9F1C;
-  color: white;
-  padding: 15px;
-  border-radius: 20px;
-  max-width: 250px;
-  z-index: 1000;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  animation: pulse 2s infinite;
-  font-family: 'Comic Neue', arial;
-}
-
-.tutorial-bubble:after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  border: 15px solid transparent;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  
-  50% {
-    transform: scale(1.05);
-  }
-  
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Character Avatars */
-.character-avatar {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: #FFD6E0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.character-avatar:hover {
-  transform: translateY(-5px) rotate(5deg);
-}
-
-.avatar-speech {
-  position: relative;
-  background: white;
-  padding: 10px 15px;
-  border-radius: 15px;
-  margin-left: 10px;
-  max-width: 200px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Piece Animations */
-.piece-capture {
-  animation: captureAnimation 0.5s ease-out forwards;
-}
-
-@keyframes captureAnimation {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  
-  50% {
-    transform: scale(1.3);
-    opacity: 0.8;
-  }
-  
-  100% {
-    transform: scale(0);
-    opacity: 0;
-  }
-}
-
-.piece-promotion {
-  animation: glow 1.5s infinite alternate;
-}
-
-@keyframes glow {
-  from {
-    filter: drop-shadow(0 0 5px gold);
-  }
-  
-  to {
-    filter: drop-shadow(0 0 20px gold);
-  }
-}
-
-/* Theme Selector */
-.theme-selector {
-  display: flex;
-  gap: 10px;
-  margin: 15px 0;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.theme-option {
-  width: 50px;
-  height: 50px;
-  border-radius: 10px;
-  cursor: pointer;
-  border: 3px solid transparent;
-  transition: all 0.3s ease;
-}
-
-.theme-option:hover {
-  transform: scale(1.1);
-}
-
-.theme-option.active {
-  border-color: var(--button-primary);
-  box-shadow: 0 0 0 3px rgba(255, 159, 28, 0.3);
-}
-
-/* Progress Tracking */
-.progress-container {
-  width: 100%;
-  margin: 15px 0;
-  text-align: center;
-}
-
-.progress-bar {
-  height: 20px;
-  background: #e0e0e0;
-  border-radius: 10px;
-  margin: 10px 0;
-  overflow: hidden;
-  width: 100%;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(to right, #A5E1D2, #FFD6E0);
-  transition: width 0.5s ease;
-  border-radius: 10px;
-}
-
-.achievement-badge {
-  width: 40px;
-  height: 40px;
-  background: gold;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 5px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
-.achievement-badge:hover {
-  transform: scale(1.1) rotate(15deg);
-}
-
-/* Sound Toggle */
-.sound-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  z-index: 100;
-  transition: all 0.3s ease;
-}
-
-.sound-toggle:hover {
-  transform: scale(1.1);
-}
-
-/* Move Indicators */
-.move-indicator {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.move-from {
-  background: rgba(255, 215, 0, 0.3);
-}
-
-.move-to {
-  background: radial-gradient(circle, rgba(182, 255, 184, 0.6) 0%, transparent 70%);
-}
-
-.capture-indicator {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border: 3px dashed #FF6B6B;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-/* Feedback Animations */
-.success-feedback {
-  animation: successFlash 1.5s ease;
-}
-
-@keyframes successFlash {
-  0% {
-    background-color: transparent;
-  }
-  
-  20% {
-    background-color: var(--success-feedback);
-  }
-  
-  100% {
-    background-color: transparent;
-  }
-}
-
-.error-feedback {
-  animation: errorShake 0.5s ease;
-}
-
-@keyframes errorShake {
-  
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  
-  20%,
-  60% {
-    transform: translateX(-5px);
-  }
-  
-  40%,
-  80% {
-    transform: translateX(5px);
-  }
-}
-
-/* Confetti effect for checkmate */
-.confetti {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background-color: #f00;
-  border-radius: 50%;
-  animation: confettiFall 5s linear forwards;
-}
-
-@keyframes confettiFall {
-  to {
-    transform: translateY(100vh) rotate(720deg);
-    opacity: 0;
-  }
-}
-
-/* Responsive design */
-@media (max-width: 600px) {
-  body {
-    padding: 10px;
-    background-attachment: scroll;
-  }
-  
-  .chess-container {
-    padding: 15px;
-    margin-top: 10px;
-    width: calc(100% - 20px);
-    border-radius: 15px;
-  }
-  
-  .chessboard {
-    max-width: 90vw;
-  }
-  
-  .square {
-    font-size: 1.8rem;
-  }
-  
-  .piece {
-    font-size: 1.3rem;
-  }
-  
-  h1 {
-    font-size: 2rem;
-  }
-  
-  .character-avatar {
-    width: 60px;
-    height: 60px;
-  }
-  
-  .move-history {
-    max-height: 70px;
-    font-size: 0.9rem;
-  }
-  
-  .chess-controls button {
-    width: 50px;
-    height: 50px;
-  }
-  
-  .chess-controls svg {
-    width: 25px;
-    height: 25px;
-  }
-  
-  .theme-option {
-    width: 35px;
-    height: 35px;
-  }
-}
-
-/* Add these styles to your CSS */
+/* Modal Styles */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -631,7 +294,6 @@ h1 {
   z-index: 1000;
   backdrop-filter: blur(5px);
   animation: fadeIn 0.5s ease-out;
-  
 }
 
 .modal-content {
@@ -644,7 +306,7 @@ h1 {
   border: 3px solid var(--light-square);
   text-align: center;
   max-height: 650px;
-overflow: auto;
+  overflow: auto;
 }
 
 .modal-content h2 {
@@ -681,11 +343,13 @@ overflow: auto;
 
 .avatar-option {
   padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
-.avatar-icon:hover {
-  transform: translateY(-3px);
-  background-color: var(--light-square);
+.avatar-option:hover {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .avatar-icon {
@@ -694,15 +358,22 @@ overflow: auto;
   border-radius: 10px;
   transition: all 0.3s ease;
   background-color: rgba(255, 255, 255, 0.7);
-  cursor: pointer;
   width: 50px;
   height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .avatar-option.active .avatar-icon {
   background-color: var(--light-square);
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-option.active {
+  background-color: rgba(255, 214, 224, 0.3);
 }
 
 .difficulty-selector {
@@ -765,31 +436,6 @@ overflow: auto;
   white-space: nowrap;
 }
 
-/* Responsive adjustments */
-@media (max-width: 900px) {
-  .difficulty-options {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .difficulty-options {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .difficulty-option {
-    padding: 10px 5px;
-  }
-  
-  .difficulty-icon {
-    font-size: 1.5rem;
-  }
-  
-  .difficulty-option span {
-    font-size: 0.75rem;
-  }
-}
-
 .theme-preview {
   display: flex;
   justify-content: center;
@@ -819,6 +465,7 @@ overflow: auto;
   font-size: 2rem;
   pointer-events: none;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: var(--text-primary);
 }
 
 .start-button {
@@ -847,18 +494,69 @@ overflow: auto;
   transform: scale(0.98) translateY(1px);
 }
 
+.start-button i {
+  font-size: 1.2rem;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
   }
-  
   to {
     opacity: 1;
   }
 }
 
-/* Responsive adjustments */
+/* Responsive design */
+@media (max-width: 900px) {
+  .difficulty-options {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 600px) {
+  body {
+    padding: 10px;
+    background-attachment: scroll;
+  }
+  
+  .chess-container {
+    padding: 15px;
+    margin-top: 10px;
+    width: calc(100% - 20px);
+    border-radius: 15px;
+  }
+  
+  .chessboard {
+    max-width: 90vw;
+  }
+  
+  .square {
+    font-size: 1.8rem;
+  }
+  
+  .piece {
+    font-size: 1.3rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .move-history {
+    max-height: 70px;
+    font-size: 0.9rem;
+  }
+  
+  .chess-controls button {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .chess-controls i {
+    font-size: 1.3rem;
+  }
+  
   .modal-content {
     padding: 20px;
   }
@@ -874,6 +572,8 @@ overflow: auto;
   
   .avatar-icon {
     font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
   }
   
   .preview-square {
@@ -888,5 +588,21 @@ overflow: auto;
   .start-button {
     padding: 12px 25px;
     font-size: 1rem;
+  }
+  
+  .difficulty-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .difficulty-option {
+    padding: 10px 5px;
+  }
+  
+  .difficulty-icon {
+    font-size: 1.5rem;
+  }
+  
+  .difficulty-option span {
+    font-size: 0.75rem;
   }
 }
